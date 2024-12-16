@@ -1,15 +1,15 @@
-import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
-import sampleRouter from "./routes/sample.router";
+import express, { NextFunction, Request, Response } from "express";
 import authRouter from "./routes/auth.router";
 import blogRouter from "./routes/blog.router";
+import sampleRouter from "./routes/sample.router";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-//routes
+// routes
 app.use("/samples", sampleRouter);
 app.use("/auth", authRouter);
 app.use("/blogs", blogRouter);

@@ -5,7 +5,6 @@ import prisma from "../../lib/prisma";
 export const registerService = async (body: User) => {
   try {
     const { name, email, password } = body;
-
     const existingUser = await prisma.user.findFirst({
       where: { email },
     });
