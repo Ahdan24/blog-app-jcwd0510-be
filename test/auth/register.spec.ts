@@ -9,7 +9,7 @@ const reqBody = {
 };
 
 describe("POST /auth/register", () => {
-  it("should register succsessfully", async () => {
+  it("should register successfully", async () => {
     prismaMock.user.findFirst.mockResolvedValueOnce(null);
 
     prismaMock.user.create.mockResolvedValueOnce({

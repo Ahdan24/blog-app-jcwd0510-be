@@ -3,8 +3,8 @@ import { body, validationResult } from "express-validator";
 
 export const validateRegister = [
   body("name").notEmpty().withMessage("Name is required").isString(),
-  body("email").notEmpty().withMessage("Email is required").isString(),
-  body("password").notEmpty().withMessage("Password is required").isString(),
+  body("email").notEmpty().withMessage("Email is required").isEmail(),
+  body("password").notEmpty().withMessage("Password is required"),
 
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
@@ -13,13 +13,14 @@ export const validateRegister = [
       res.status(400).send({ message: errors.array()[0].msg });
       return;
     }
+
     next();
   },
 ];
 
 export const validateLogin = [
-  body("email").notEmpty().withMessage("Email is required").isString(),
-  body("password").notEmpty().withMessage("Password is required").isString(),
+  body("email").notEmpty().withMessage("Email is required").isEmail(),
+  body("password").notEmpty().withMessage("Password is required"),
 
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
@@ -28,14 +29,13 @@ export const validateLogin = [
       res.status(400).send({ message: errors.array()[0].msg });
       return;
     }
+
     next();
   },
 ];
 
-
 export const validateForgotPassword = [
-  body("email").notEmpty().withMessage("Email is required").isString(),
-  body("password").notEmpty().withMessage("Password is required").isString(),
+  body("email").notEmpty().withMessage("Email is required").isEmail(),
 
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
@@ -44,12 +44,13 @@ export const validateForgotPassword = [
       res.status(400).send({ message: errors.array()[0].msg });
       return;
     }
+
     next();
   },
 ];
 
 export const validateResetPassword = [
-  body("password").notEmpty().withMessage("Password is required").isString(),
+  body("password").notEmpty().withMessage("Password is required"),
 
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
@@ -58,6 +59,7 @@ export const validateResetPassword = [
       res.status(400).send({ message: errors.array()[0].msg });
       return;
     }
+
     next();
   },
 ];

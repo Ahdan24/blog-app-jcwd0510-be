@@ -49,8 +49,8 @@ export const resetPasswordController = async (
   next: NextFunction
 ) => {
   try {
-    const userId = Number(res.locals.user.id)
-    const result = await resetPasswordService(userId,req.body.password);
+    const userId = Number(res.locals.user.id);
+    const result = await resetPasswordService(userId, req.body.password);
     res.status(200).send(result);
   } catch (error) {
     next(error);
