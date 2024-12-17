@@ -9,5 +9,6 @@ const jwt_1 = require("../lib/jwt");
 const router = (0, express_1.Router)();
 router.get("/", blog_controller_1.getBlogsController);
 router.get("/:id", blog_controller_1.getBlogController);
-router.post("/", jwt_1.verifyToken, (0, multer_1.uploader)().fields([{ name: "thumbnail", maxCount: 1 }]), fileFilter_1.fileFilter, blog_validator_1.validateCreateBlog, blog_controller_1.createBlogsController);
+router.post("/", jwt_1.verifyToken, (0, multer_1.uploader)().fields([{ name: "thumbnail", maxCount: 1 }]), fileFilter_1.fileFilter, blog_validator_1.validateCreateBlog, blog_controller_1.createBlogController);
+router.delete("/:id", jwt_1.verifyToken, blog_controller_1.deleteBlogController);
 exports.default = router;
