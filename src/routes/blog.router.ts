@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
-  createBlogsController,
+  createBlogController,
+  deleteBlogController,
   getBlogController,
   getBlogsController,
 } from "../controllers/blog.controller";
@@ -19,7 +20,8 @@ router.post(
   uploader().fields([{ name: "thumbnail", maxCount: 1 }]),
   fileFilter,
   validateCreateBlog,
-  createBlogsController
+  createBlogController
 );
+router.delete("/:id", verifyToken, deleteBlogController);
 
 export default router;
